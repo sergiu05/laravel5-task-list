@@ -20,4 +20,13 @@ class TaskRepository {
 					->get();
 
 	}
+
+	/**
+	* Count all the tasks	
+	*
+	* @return int
+	*/
+	public function count() {
+		return Task::count();
+	}
 }

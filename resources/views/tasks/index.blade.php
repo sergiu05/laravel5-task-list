@@ -61,6 +61,11 @@
 					@endforeach
 				</tbody>
 			</table>
+			<div class="alert alert-info" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<p>Status: <strong>{{ $count['tasks'] }}</strong> tasks added by {{ $count['users'] }} users</p>
+			</div>
+			<p></p>
 		</div>
 	</div>
 	@endif

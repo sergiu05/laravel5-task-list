@@ -49,9 +49,11 @@ class TaskController extends Controller
     		'name' => 'required|max:255'
     	]);
 
-    	$request->user()->tasks()->create([
+    	$task = $request->user()->tasks()->create([
     		'name' => $request->name
     	]);
+
+    	alert()->overlay('Congrats!', 'You added a task with id ' . $task->id, "success");
 
     	return redirect('/tasks');
     }
@@ -68,6 +70,8 @@ class TaskController extends Controller
     	$this->authorize('destroy', $task);
 
     	$task->delete();
+
+    	alert()->overlay('Info', 'You deleted the task with id ' . $task->id, "info");
 
     	return redirect('/tasks');
 
