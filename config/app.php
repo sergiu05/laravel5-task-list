@@ -67,6 +67,11 @@ return [
 
     'locale' => 'en',
 
+    'locales' => [
+    	'en' => 'English',
+    	'ro' => 'Romanian'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -156,7 +161,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Socieboy\Alerts\AlertServiceProvider::class,
-       	App\Providers\ComposerServiceProvider::class
+       	App\Providers\ComposerServiceProvider::class,
+       	Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class
     ],
 
     /*
@@ -201,7 +207,8 @@ return [
         'Storage'   => Illuminate\Support\Facades\Storage::class,
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View'      => Illuminate\Support\Facades\View::class,      
+        'View'      => Illuminate\Support\Facades\View::class,
+        'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class      
     ],
 
 ];

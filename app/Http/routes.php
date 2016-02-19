@@ -32,7 +32,19 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::auth();
 
-    Route::get('/tasks', 'TaskController@index');
+    Route::group([
+    	'prefix' => LaravelLocalization::setLocale(),
+    	'middleware' => ['localize', 'localeSessionRedirect', 'localizationRedirect']
+    ], function() {
+    	Route::get(LaravelLocalization::transRoute('routes.tasks'), 'TaskController@index');
+    	Route::get(LaravelLocalization::transRoute('routes.home'), function () {
+    		return view('welcome');
+		});
+		Route::get(LaravelLocalization::transRoute('routes.login'), 'Auth\AuthController@showLoginForm');
+		Route::get(LaravelLocalization::transRoute('routes.register'), 'Auth\AuthController@showRegistrationForm');
+    });
+
+    //Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
     Route::delete('/task/{task}', 'TaskController@destroy');
 });

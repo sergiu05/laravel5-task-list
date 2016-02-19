@@ -14,7 +14,7 @@
 		{!! csrf_field() !!}
 
 		<div class="form-group">
-			<label for="task-name" class="col-sm-3 control-label">Task</label>
+			<label for="task-name" class="col-sm-3 control-label">{{ trans('messages.task') }}</label>
 			<div class="col-sm-6">
 				<input type="text" name="name" id="task-name" class="form-control">
 			</div>
@@ -22,7 +22,7 @@
 
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-6">
-				<button type="submit" class="btn btn-default"><i class="fa fa-plus"></i> Create Task</button>
+				<button type="submit" class="btn btn-default"><i class="fa fa-plus"></i> {{ trans('messages.createTask') }}</button>
 			</div>
 		</div>
 	</form>
@@ -30,15 +30,15 @@
 	@if (count($tasks))
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Current Tasks
+			{{ trans('messages.myTasks') }}
 		</div>
 
 		<div class="panel-body">
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>Task</th>
-						<th>Action</th>
+						<th>{{ trans('messages.task') }}</th>
+						<th>{{ trans('messages.action') }}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -53,7 +53,7 @@
 								{!! method_field('DELETE') !!}								
 
 								<button type="submit" id="delete-task-{{ $task->id }}" class="btn btn-danger">
-									<i class="fa fa-btn fa-trash"></i> Delete
+									<i class="fa fa-btn fa-trash"></i> {{ trans('messages.action') }}
 								</button>
 							</form>
 						</td>
@@ -63,7 +63,7 @@
 			</table>
 			<div class="alert alert-info" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<p>Status: <strong>{{ $count['tasks'] }}</strong> tasks added by {{ $count['users'] }} users</p>
+				<p>{{ trans('messages.status') }}: <strong>{{ trans_choice('messages.tasks', $count['tasks']) }}</strong> {{ trans('messages.addedBy') }} {{ trans_choice('messages.users', $count['users']) }}</p>
 			</div>
 			<p></p>
 		</div>
